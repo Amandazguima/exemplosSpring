@@ -26,9 +26,7 @@ public class Publisher {
             try {
                 var orderJson = mapper.writeValueAsString(order);
 
-                Map<String, String> headers = Map.of("id", "1");
-
-                template.convertAndSend(exchange,routingKey, orderJson, order);
+                template.convertAndSend(exchange,routingKey, orderJson);
 
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
